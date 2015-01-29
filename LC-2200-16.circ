@@ -27,8 +27,8 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
   </options>
   <mappings>
     <tool lib="6" map="Button2" name="Menu Tool"/>
-    <tool lib="6" map="Button3" name="Menu Tool"/>
     <tool lib="6" map="Ctrl Button1" name="Menu Tool"/>
+    <tool lib="6" map="Button3" name="Menu Tool"/>
   </mappings>
   <toolbar>
     <tool lib="6" name="Poke Tool"/>
@@ -63,79 +63,83 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
-    <wire from="(80,470)" to="(340,470)"/>
-    <wire from="(210,50)" to="(210,310)"/>
-    <wire from="(360,490)" to="(360,590)"/>
-    <wire from="(100,250)" to="(320,250)"/>
-    <wire from="(210,310)" to="(210,380)"/>
-    <wire from="(100,250)" to="(100,290)"/>
-    <wire from="(210,310)" to="(300,310)"/>
-    <wire from="(100,290)" to="(100,340)"/>
-    <wire from="(320,250)" to="(320,260)"/>
-    <wire from="(290,420)" to="(340,420)"/>
-    <wire from="(340,420)" to="(340,450)"/>
-    <wire from="(210,380)" to="(280,380)"/>
-    <wire from="(350,360)" to="(350,450)"/>
-    <wire from="(100,290)" to="(300,290)"/>
-    <wire from="(100,340)" to="(100,410)"/>
-    <wire from="(100,410)" to="(250,410)"/>
-    <wire from="(360,300)" to="(360,450)"/>
-    <wire from="(210,380)" to="(210,430)"/>
-    <wire from="(100,340)" to="(280,340)"/>
-    <wire from="(300,230)" to="(320,230)"/>
-    <wire from="(100,50)" to="(100,250)"/>
-    <wire from="(280,530)" to="(340,530)"/>
-    <wire from="(360,240)" to="(370,240)"/>
-    <wire from="(340,300)" to="(360,300)"/>
-    <wire from="(300,310)" to="(300,320)"/>
-    <wire from="(370,240)" to="(370,450)"/>
-    <wire from="(210,430)" to="(250,430)"/>
-    <wire from="(340,480)" to="(340,530)"/>
-    <wire from="(340,360)" to="(350,360)"/>
-    <comp lib="2" loc="(360,490)" name="Multiplexer">
+    <wire from="(280,310)" to="(300,310)"/>
+    <wire from="(320,80)" to="(330,80)"/>
+    <wire from="(330,80)" to="(330,290)"/>
+    <wire from="(260,70)" to="(280,70)"/>
+    <wire from="(170,220)" to="(240,220)"/>
+    <wire from="(70,130)" to="(260,130)"/>
+    <wire from="(70,180)" to="(240,180)"/>
+    <wire from="(170,270)" to="(210,270)"/>
+    <wire from="(300,320)" to="(300,340)"/>
+    <wire from="(250,260)" to="(300,260)"/>
+    <wire from="(320,330)" to="(320,360)"/>
+    <wire from="(280,90)" to="(280,100)"/>
+    <wire from="(170,220)" to="(170,270)"/>
+    <wire from="(280,340)" to="(300,340)"/>
+    <wire from="(70,90)" to="(280,90)"/>
+    <wire from="(70,130)" to="(70,180)"/>
+    <wire from="(70,90)" to="(70,130)"/>
+    <wire from="(170,150)" to="(260,150)"/>
+    <wire from="(320,140)" to="(320,290)"/>
+    <wire from="(310,200)" to="(310,290)"/>
+    <wire from="(260,150)" to="(260,160)"/>
+    <wire from="(70,250)" to="(210,250)"/>
+    <wire from="(170,70)" to="(170,150)"/>
+    <wire from="(70,70)" to="(70,90)"/>
+    <wire from="(300,260)" to="(300,290)"/>
+    <wire from="(70,180)" to="(70,250)"/>
+    <wire from="(170,150)" to="(170,220)"/>
+    <wire from="(300,200)" to="(310,200)"/>
+    <wire from="(300,140)" to="(320,140)"/>
+    <comp lib="0" loc="(70,70)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="width" val="16"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="A"/>
+    </comp>
+    <comp lib="1" loc="(300,200)" name="NAND Gate">
+      <a name="width" val="16"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="0" loc="(170,70)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="width" val="16"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="B"/>
+    </comp>
+    <comp lib="0" loc="(280,340)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="DrALU"/>
+    </comp>
+    <comp lib="0" loc="(260,70)" name="Constant">
+      <a name="width" val="16"/>
+    </comp>
+    <comp lib="2" loc="(320,330)" name="Multiplexer">
       <a name="facing" val="south"/>
       <a name="select" val="2"/>
       <a name="width" val="16"/>
     </comp>
-    <comp lib="0" loc="(80,470)" name="Pin">
+    <comp lib="0" loc="(280,310)" name="Pin">
       <a name="width" val="2"/>
+      <a name="tristate" val="false"/>
       <a name="label" val="func"/>
     </comp>
-    <comp lib="0" loc="(100,50)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="width" val="16"/>
-      <a name="label" val="A"/>
-    </comp>
-    <comp lib="0" loc="(210,50)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="width" val="16"/>
-      <a name="label" val="B"/>
-    </comp>
-    <comp lib="3" loc="(290,420)" name="Adder">
+    <comp lib="3" loc="(320,80)" name="Adder">
       <a name="width" val="16"/>
     </comp>
-    <comp lib="0" loc="(360,590)" name="Pin">
+    <comp lib="3" loc="(300,140)" name="Subtractor">
+      <a name="width" val="16"/>
+    </comp>
+    <comp lib="0" loc="(320,360)" name="Pin">
       <a name="facing" val="north"/>
       <a name="output" val="true"/>
       <a name="width" val="16"/>
+      <a name="tristate" val="false"/>
       <a name="label" val="Output"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="3" loc="(360,240)" name="Adder">
-      <a name="width" val="16"/>
-    </comp>
-    <comp lib="0" loc="(280,530)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="DrALU"/>
-    </comp>
-    <comp lib="3" loc="(340,300)" name="Subtractor">
-      <a name="width" val="16"/>
-    </comp>
-    <comp lib="1" loc="(340,360)" name="NAND Gate">
-      <a name="width" val="16"/>
-      <a name="inputs" val="2"/>
-    </comp>
-    <comp lib="0" loc="(300,230)" name="Constant">
+    <comp lib="3" loc="(250,260)" name="Adder">
       <a name="width" val="16"/>
     </comp>
   </circuit>
