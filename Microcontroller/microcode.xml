@@ -1,0 +1,41 @@
+<Microcode>
+	<State name="">
+		<Signal name=""/>
+	</State>
+	<State name="">
+	</State>
+	<State name="">
+	</State>
+</Microcode>
+
+
+	The available state names are listed below: 
+	
+		  /*  0 */ "DUMMY",
+		  /*  1 */ "FETCH0", "FETCH1", "FETCH2", "FETCH3", "FETCH4",
+				   "FETCH5", "FETCH6", "FETCH7", "FETCH8", "FETCH9",
+		  /* 11 */ "DECODE", //Decode is no longer needed
+		  /* 12 */ "ADD0", "ADD1", "ADD2", "ADD3",
+		  /* 16 */ "ADDI0", "ADDI1", "ADDI2", "ADDI3",
+		  /* 20 */ "NAND0", "NAND1", "NAND2", "NAND3",
+		  /* 24 */ "LW0", "LW1", "LW2", "LW3",
+		  /* 28 */ "SW0", "SW1", "SW2", "SW3",
+		  /* 32 */ "BEQ0", "BEQ1", "BEQ2", "BEQ3", "BEQ4",
+				   "BEQ5", "BEQ6", "BEQ7", "BEQ8",
+		  /* 41 */ "JALR0", "JALR1", "JALR2", "JALR3", "JALR4",
+		  /* 55 */ "FUTURE", "FUTURE", "FUTURE", "FUTURE", "FUTURE",
+				   "FUTURE", "FUTURE",
+		  /* 62 */ "RESERVED",
+		  /* 63 */ "HALT0"
+
+	For each signal that must be asserted, a <Signal name="SigName"/> line must be used. 
+	The signals that can be are listed below: 
+		
+		DrREG, DrMEM, DrALU, DrPC, DrOFF, LdPC, LdIR, LdMAR, LdA, LdB, LdZ, 
+		WrREG, WrMEM, RegSelLo, RegSelHi, ALULo, ALUHi, OPTest, chkZ
+
+
+	Finally, run this code
+
+		java -jar MICOCompiler.jar -in microcode.xml
+	
