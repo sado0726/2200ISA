@@ -1,30 +1,188 @@
 <Microcode>
-	<State name="">
-		<Signal name=""/>
-	</State>
-	<State name="">
-	</State>
-	<State name="">
-	</State>
+	<State name="FETCH0">
+		<Signal name="DrPC"/>
+		<Signal name="LdA"/>
+		<Signal name="LdMAR"/>
+		<Goto state="FETCH1"/>
+	</State> <!--1-->
+
+	<State name="FETCH1">
+		<Signal name="DrMEM"/>
+		<Signal name="LdIR"/>
+		<Goto state="FETCH2"/>
+	</State> <!--2-->
+
+	<State name="FETCH2">
+		<Signal name="ALUHi"/>
+		<Signal name="ALULow"/>
+		<Signal name="DrALU"/>
+		<Signal name="LdPC"/>
+		<Signal name="OPTest"/>
+	</State> <!--3-->
+
+	<State name="ADD0">
+		<Signal name="RegSelLo"/>
+		<Signal name="DrREG"/>
+		<Signal name="LdA"/>
+		<Goto state="ADD1"/>
+	</State> <!--4-->
+
+	<State name="ADD1">
+		<Signal name="RegSelHi"/>
+		<Signal name="DrREG"/>
+		<Signal name="LdB"/>
+		<Goto state="ADD2"/>
+	</State> <!--5-->
+	<State name="ADD2">
+		<Signal name="DrALU"/>
+		<Signal name="WrREG"/>
+		<Goto state="FETCH0"/>
+	</State> <!--6-->
+	<State name="NAND0">
+		<Signal name="RegSelLo"/>
+		<Signal name="DrREG"/>
+		<Signal name="LdA"/>
+		<Goto state="NAND1"/>		
+	</State> <!--7-->
+	<State name="NAND1">
+		<Signal name="RegSelHi"/>
+		<Signal name="DrREG"/>
+		<Signal name="LdB"/>
+		<Goto state="NAND2"/>
+	</State> <!--8-->
+	<State name="NAND2">
+		<Signal name="ALULo"/>
+		<Signal name="DrALU"/>	
+		<Signal name="WrREG"/>
+		<Goto state="FETCH0"/>
+	</State> <!--9-->
+	<State name="ADDI0">
+		<Signal name="RegSelLo"/>
+		<Signal name="DrREG"/>
+		<Signal name="LdA"/>
+		<Goto state="ADDI1"/>
+	</State> <!--10-->
+	<State name="ADDI1">
+		<Signal name="DrOFF"/>
+		<Signal name="LdB"/>
+		<Goto state="ADDI2"/>
+	</State> <!--11-->
+	<State name="ADDI2">
+		<Signal name="ALULo"/>
+		<Signal name="ALUHi"/>		
+		<Signal name="DrALU"/>	
+		<Signal name="WrREG"/>
+		<Goto state="FETCH0"/>
+	</State> <!--12-->
+	<State name="LW0">
+		<Signal name="RegSelLo"/>
+		<Signal name="DrREG"/>
+		<Signal name="LdA"/>
+		<Goto state="LW1"/>
+	</State> <!--13-->
+	<State name="LW1">
+		<Signal name="DrOFF"/>
+		<Signal name="LdB"/>
+		<Goto state="LW2"/>
+	</State> <!--14-->
+	<State name="LW2">		
+		<Signal name="DrALU"/>	
+		<Signal name="LdMAR"/>
+		<Goto state="LW3"/>
+	</State> <!--15-->
+	<State name="LW3">
+		<Signal name="DrMEM"/>
+		<Signal name="WrREG"/>
+		<Goto state="FETCH0"/>
+	</State> <!--16-->
+	<State name="SW0">
+		<Signal name="RegSelLo"/>
+		<Signal name="DrREG"/>
+		<Signal name="LdA"/>
+		<Goto state="SW1"/>
+	</State> <!--17-->
+	<State name="SW1">
+		<Signal name="DrOFF"/>
+		<Signal name="LdB"/>
+		<Goto state="SW2"/>
+	</State> <!--18-->
+	<State name="SW2">		
+		<Signal name="DrALU"/>	
+		<Signal name="LdMAR"/>
+		<Goto state="SW3"/>
+	</State> <!--19-->
+	<State name="SW3">
+		<Signal name="DrREG"/>
+		<Signal name="WrMEM"/>
+		<Goto state="FETCH0"/>
+	</State> <!--20-->
+	<State name="BEQ0">
+		<Signal name="RegSelLo"/>
+		<Signal name="DrREG"/>
+		<Signal name="LdA"/>
+		<Goto state="BEQ1"/>
+	</State> <!--21-->
+	<State name="BEQ1">
+		<Signal name="DrREG"/>
+		<Signal name="LdB"/>
+		<Goto state="BEQ2"/>
+	</State> <!--22-->
+	<State name="BEQ2">
+		<Signal name="DrALU"/>
+		<Signal name="LdZ"/>
+		<Signal name="chkZ"/>
+	</State> <!--23-->
+	<State name="BEQ3A" onZ="false">
+		<Goto state="FETCH0"/>
+	</State> <!--24-->
+	<State name="BEQ3B" onZ="true">
+		<Signal name="DrPC"/>
+		<Signal name="LdA"/>
+		<Goto state="BEQ4"/>
+	</State> <!--25-->
+	<State name="BEQ4">
+		<Signal name="DrOFF"/>
+		<Signal name="LdB"/>
+		<Goto state="BEQ5"/>
+	</State> <!--26-->
+	<State name="BEQ5">
+		<Signal name="DrALU"/>
+		<Signal name="LdPC"/>
+		<Goto state="FETCH0"/>
+	</State> <!--27-->
+	<State name="JALR0">
+		<Signal name="DrPC"/>
+		<Signal name="RegSelLo"/>
+		<Signal name="WrREG"/>
+		<Goto state="JALR1"/>
+	</State> <!--28-->
+	<State name="JALR1">
+		<Signal name="DrREG"/>
+		<Signal name="LdPC"/>
+		<Goto state="FETCH0"/>
+	</State> <!--29-->
+	<State name="HALT0">
+		<Goto state="HALT0"/>
+	</State> <!--30-->
 </Microcode>
 
+<!--
+<Microcode>
+	<State name="STATE0">
+		<Signal name = "Signal1"/>
+		<Signal name = "Signal2"/>
+		<Goto state="STATE1"/>
+	</State>
+	<State name="STATE1" onZ="false">
+		<Signal name = "Signal3"/>
+		<Signal name = "Signal4"/>
+		<Goto state="STATE2"/>
+	</State>
+</Microcode>
 
 	The available state names are listed below: 
 	
 		  /*  0 */ "DUMMY",
-		  /*  1 */ "FETCH0", "FETCH1", "FETCH2", "FETCH3", "FETCH4",
-				   "FETCH5", "FETCH6", "FETCH7", "FETCH8", "FETCH9",
-		  /* 11 */ "DECODE", //Decode is no longer needed
-		  /* 12 */ "ADD0", "ADD1", "ADD2", "ADD3",
-		  /* 16 */ "ADDI0", "ADDI1", "ADDI2", "ADDI3",
-		  /* 20 */ "NAND0", "NAND1", "NAND2", "NAND3",
-		  /* 24 */ "LW0", "LW1", "LW2", "LW3",
-		  /* 28 */ "SW0", "SW1", "SW2", "SW3",
-		  /* 32 */ "BEQ0", "BEQ1", "BEQ2", "BEQ3", "BEQ4",
-				   "BEQ5", "BEQ6", "BEQ7", "BEQ8",
-		  /* 41 */ "JALR0", "JALR1", "JALR2", "JALR3", "JALR4",
-		  /* 55 */ "FUTURE", "FUTURE", "FUTURE", "FUTURE", "FUTURE",
-				   "FUTURE", "FUTURE",
 		  /* 62 */ "RESERVED",
 		  /* 63 */ "HALT0"
 
@@ -38,4 +196,4 @@
 	Finally, run this code
 
 		java -jar MICOCompiler.jar -in microcode.xml
-	
+-->
